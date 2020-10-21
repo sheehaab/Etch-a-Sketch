@@ -1,6 +1,4 @@
-html{
-	line-height: 0 !important;
-}
+
 
 body{
 	background-color:#f1f3f8;
@@ -21,5 +19,6 @@ body{
 	width:192px;
 	height:192px;
 	background-color: #d6e0f0;
+	line-height: 0;
 }
 
