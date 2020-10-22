@@ -32,17 +32,16 @@ createGrid(2);
 
 //add class to the grid you create it above but for the first time only
 const gridEl = document.querySelectorAll('.div-grid');
-let darker = 0;
+
 
 
 //add the fucntion to make black when hover over the square but for first time only (default)
 gridEl.forEach((div)=>{
+	let opacity = 100;
 	div.addEventListener('mouseover',function(){
-			//rgb(0,0,0)
-			div.style.backgroundColor = 'rgb(' + randomNumber() + ',' + randomNumber() + ',' + randomNumber() + ')';
-		
-		
-		
+				//hsl(0%,0%,0%)
+				opacity-=10;
+				div.style.backgroundColor = 'hsl(' + randomNumber() + ',' + randomNumber() + '%' + ',' + opacity + '%' + ')';	
 	})
 })
 
@@ -58,13 +57,11 @@ btn.addEventListener('click',function(){
 	//make the boxes will be black after you click
 	const gridEl = document.querySelectorAll('.div-grid');
 	gridEl.forEach((div)=>{
+		let opacity = 100;
 		div.addEventListener('mouseover',function(){
 			
-			//rgb(0,0,0)
-			div.style.backgroundColor = 'rgb(' + randomNumber() + ',' + randomNumber() + ',' + randomNumber() + ')';
-			
-		
-			
+				opacity-=10;
+				div.style.backgroundColor = 'hsl(' + randomNumber() + ',' + randomNumber() + '%' + ',' + opacity + '%' + ')';
 		})
 	})
 
@@ -72,6 +69,7 @@ btn.addEventListener('click',function(){
 })
 
 function randomNumber(){
-	let random = Math.floor(Math.random() * 225);
+	let random = Math.floor(Math.random() * 100);
+	console.log(random);
 	return random;
 }
