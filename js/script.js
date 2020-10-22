@@ -3,17 +3,24 @@ const gridHtml = document.querySelector('#etch-grid');
 
 //fucntion to create the squers in the grid 
 function createGrid(userInput){
+
+	const division = 512/userInput;
+	let width = division ;
+	let height = division ;
+
+
 		//first for loop to make the rows
 		for(let i=0;i<userInput;i++){
-		//second for loop to make the column			
+		//second for loop to make the column	
 			for(let j=0;j<userInput;j++){
 				const grid = document.createElement('div');
-				/*Remeber to make the style in the css style not inline*/
-				grid.style.height = '30' + 'px';
-				grid.style.width = '30' + 'px';
+				
+				grid.style.height = height + 'px';
+				grid.style.width = width + 'px';
 				grid.classList.add('height');
 				gridHtml.appendChild(grid);
 				grid.classList.add('div-grid');
+				
 			}
 			
 		}
@@ -21,17 +28,21 @@ function createGrid(userInput){
 
 
 //fire the function for the first time (dafault)
-createGrid(3);
+createGrid(2);
 
 //add class to the grid you create it above but for the first time only
 const gridEl = document.querySelectorAll('.div-grid');
-
+let darker = 0;
 
 
 //add the fucntion to make black when hover over the square but for first time only (default)
 gridEl.forEach((div)=>{
 	div.addEventListener('mouseover',function(){
-		div.classList.add('black');
+			//rgb(0,0,0)
+			div.style.backgroundColor = 'rgb(' + randomNumber() + ',' + randomNumber() + ',' + randomNumber() + ')';
+		
+		
+		
 	})
 })
 
@@ -47,16 +58,20 @@ btn.addEventListener('click',function(){
 	//make the boxes will be black after you click
 	const gridEl = document.querySelectorAll('.div-grid');
 	gridEl.forEach((div)=>{
-	div.addEventListener('mouseover',function(){
-		div.classList.add('black');
+		div.addEventListener('mouseover',function(){
+			
+			//rgb(0,0,0)
+			div.style.backgroundColor = 'rgb(' + randomNumber() + ',' + randomNumber() + ',' + randomNumber() + ')';
+			
+		
+			
+		})
 	})
-})
 
 	
 })
 
-
-
-
-
-
+function randomNumber(){
+	let random = Math.floor(Math.random() * 225);
+	return random;
+}
