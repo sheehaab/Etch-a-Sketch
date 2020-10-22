@@ -4,7 +4,7 @@ const gridHtml = document.querySelector('#etch-grid');
 //fucntion to create the squers in the grid 
 function createGrid(userInput){
 
-	const division = 512/userInput;
+	const division = 568/userInput;
 	let width = division ;
 	let height = division ;
 
@@ -37,10 +37,12 @@ const gridEl = document.querySelectorAll('.div-grid');
 
 //add the fucntion to make black when hover over the square but for first time only (default)
 gridEl.forEach((div)=>{
-	let opacity = 100;
+	//the opacity or darkness of the colors
+	let opacity = 50;
 	div.addEventListener('mouseover',function(){
+				//it get darker every time the mouseover is fired
+				opacity-=5;
 				//hsl(0%,0%,0%)
-				opacity-=10;
 				div.style.backgroundColor = 'hsl(' + randomNumber() + ',' + randomNumber() + '%' + ',' + opacity + '%' + ')';	
 	})
 })
@@ -51,15 +53,19 @@ const btn = document.querySelector('#btn');
 btn.addEventListener('click',function(){
 	//ask you how many squares do you want ex:20*20
 	let userInput = prompt(`How many squares to make grid?`)
+	//if the user click cancel button 
 	if(userInput === null){
 			return;
 	}
+	//if the user put in the prompt anything is not it will ask for a number until he write it
 	while(isNaN(userInput)){
 		 userInput = prompt(`This is not a number, Please put a valid number!`)
 		 if(userInput === null){
 			return;
 		} 
 	}
+
+	//if the user put a number higher than 80 and less than 1 (Negtive) then it will ask for a number until he write it
 	while(userInput > 80 || userInput < 1){
 		userInput = prompt(`Out of range, Please put a number from 1 to 80`);
 		if(userInput === null){
@@ -74,10 +80,12 @@ btn.addEventListener('click',function(){
 	//make the boxes will be black after you click
 	const gridEl = document.querySelectorAll('.div-grid');
 	gridEl.forEach((div)=>{
-		let opacity = 100;
+		//the opacity or darkness of the colors
+		let opacity = 50;
 		div.addEventListener('mouseover',function(){
-			
-				opacity-=10;
+				//it get darker every time the mouseover is fired
+				opacity-=5;
+				//hsl(0%,0%,0%)
 				div.style.backgroundColor = 'hsl(' + randomNumber() + ',' + randomNumber() + '%' + ',' + opacity + '%' + ')';
 		})
 	})
