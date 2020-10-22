@@ -51,6 +51,23 @@ const btn = document.querySelector('#btn');
 btn.addEventListener('click',function(){
 	//ask you how many squares do you want ex:20*20
 	let userInput = prompt(`How many squares to make grid?`)
+	if(userInput === null){
+			return;
+	}
+	while(isNaN(userInput)){
+		 userInput = prompt(`This is not a number, Please put a valid number!`)
+		 if(userInput === null){
+			return;
+		} 
+	}
+	while(userInput > 80 || userInput < 1){
+		userInput = prompt(`Out of range, Please put a number from 1 to 80`);
+		if(userInput === null){
+			return;
+		}
+	}
+
+	
 	gridHtml.innerHTML = "";
 	createGrid(userInput);
 
@@ -70,6 +87,5 @@ btn.addEventListener('click',function(){
 
 function randomNumber(){
 	let random = Math.floor(Math.random() * 100);
-	console.log(random);
 	return random;
 }
